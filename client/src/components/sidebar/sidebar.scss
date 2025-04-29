@@ -1,0 +1,126 @@
+@mixin display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar{
+
+    // background: #28282B;
+    background-color: rgb(255, 255, 255, 0.05);
+    height: 100vh;
+    width: 12.5rem;
+    color:lightgray;
+    position: fixed;
+
+    border-radius: 0 10px 10px 0;
+
+    padding:10px;
+
+    .logo{
+        width: 100%;
+        @include display;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: start;
+        img{
+            width: 2.8125rem;
+            border-radius: 50%;
+        }
+        .text{
+            h3{
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+            p{
+                font-size: 0.6rem;
+            }
+        }
+    }
+}
+.line{
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #353935;
+    height: 1px;
+}
+.navigation-items{
+
+    margin-top: 1.875rem ;
+    // text-align: center;
+    p{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        letter-spacing: 1.2px;
+        font-size: 10px;
+        padding-left: 16px;
+        color: gray;
+    }
+    .exploreItems,.resourceItems,.contactItems{
+        margin-top: 10px;
+        width: 100%;
+        height: 40px;
+        // background: #36454F;
+        // background: #343434;
+        background-color: #28282B;
+        @include display;
+        justify-content: start;
+        padding-left: 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px #353935;
+
+        
+        a{
+           
+            text-decoration: none;
+            color: lightgray;
+            font-weight: 500;
+            color: lightgray;
+            font-size: small;
+           @include display;
+           gap: 10px;
+           align-items: center;
+
+            span{
+                @include display;
+                
+            }
+           
+        }
+    }
+}
+
+@media (max-width : 460px) {
+    .sidebar{
+        width: 4rem;
+        @include display;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+    }
+    .text{
+        display: none;
+    }
+    .exploreItems,.resourceItems,.contactItems{
+      padding: 10px;
+        a{
+            #ex,#sf,#bs,#ab,#fi,#th,#cn,#fb,#xt,#ln{
+                display: none;
+            }
+        }
+        
+    }
+
+    .navigation-items {
+        p{
+            display: none;
+        }
+        .line-sh{
+            width: 100%;
+            height: 1px;
+            background-color: #353935;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+    }
+}

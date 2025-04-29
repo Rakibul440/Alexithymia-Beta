@@ -1,0 +1,29 @@
+
+@mixin display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.feeds{
+    width: calc(100vw - 12.5rem);
+    display: flex;
+    flex-direction: column; // whole section
+    background-image: url("./content/stars.png");
+    position: relative;
+    left: 12.5rem;
+    
+    section{
+        scroll-snap-align: center;
+    }
+
+   
+}
+
+@media (max-width : 460px) {
+    .feeds{
+        width: calc(100vw - 4rem);
+        left: 4rem;
+    }
+}

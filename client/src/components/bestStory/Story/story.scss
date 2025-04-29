@@ -1,0 +1,27 @@
+.story{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 70%;
+    border-radius: 5px;
+    background: rgb(255, 255, 255, 0.05);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: hidden;
+    color: rgb(241, 222, 222);
+    padding: 20px;
+
+    backdrop-filter: blur(10px);
+
+    .story-name{
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width : 460px) {
+    .story{
+        width: 95%;
+    }
+}

@@ -1,0 +1,38 @@
+
+@mixin display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.forms{
+    width: calc(100vw - 12.5rem);
+    display: flex;
+    flex-direction: column; // whole section
+    background-image: url("./stars.png");
+    position: relative;
+    left: 12.5rem;
+    top: 0;
+    height: 100vh;
+    @include display;
+    flex-direction: column;
+    overflow-x: hidden;
+    section{
+        scroll-snap-align: center;
+    }
+
+   h1{
+    color: whitesmoke;
+    font-size: 1.6rem;
+    text-shadow: 2px 2px gray;
+    margin-bottom: 20px;
+   }
+}
+
+@media (max-width : 460px) {
+    .forms{
+        width: calc(100vw - 4rem);
+        left: 4rem;
+    }
+}

@@ -1,0 +1,30 @@
+@mixin display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.best-story{
+    width: calc(100vw - 12.5rem);
+    display: flex;
+    flex-direction: column; // whole section
+    background-image: url("./stars.png");
+    position: relative;
+    left: 12.5rem;
+    top: 0;
+    height: 100vh;
+    overflow-x: hidden;
+    section{
+        scroll-snap-align: center;
+        width: 100%;
+        @include display;
+    }
+
+}
+
+@media (max-width : 460px) {
+    .best-story{
+        width: calc(100vw - 4rem);
+        left: 4rem;
+    }
+}

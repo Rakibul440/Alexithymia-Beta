@@ -1,0 +1,54 @@
+@mixin display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture{
+    // height: 20vh;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .headingText{
+        font-size: 1.7rem;
+        color:bisque;
+        text-shadow: 2px 2px gray;
+    }
+    .story-scene{
+        display: flex;
+        gap: 10px;
+        .img-card{
+            margin-top: 40px;
+            display: flex;
+            width: 230px;
+            overflow-x: scroll ;
+            scrollbar-width: thin;
+            scroll-snap-type: x mandatory;
+            border-radius: 5px;
+            border: 1px solid gray;
+            cursor: pointer;
+            img{
+                
+                scroll-snap-align: center;
+                box-sizing: border-box;
+                width:100%;
+                filter: grayscale(100%);
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width : 460px) {
+    .headingText h1{
+        margin-top: 50px;
+        font-size: 1.5rem;
+    }
+    #extra,#ex{
+        display: none;
+    }
+}

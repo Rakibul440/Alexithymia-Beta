@@ -1,0 +1,71 @@
+@mixin display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-page{
+    width: calc(100vw - 12.5rem);
+    display: flex;
+    flex-direction: column; // whole section
+    background-image: url("./stars.png");
+    position: relative;
+    left: 12.5rem;
+    top: 0;
+    height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+    
+    section{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        .about-app,.developer{
+            width: 50%;
+            min-width: 280px;
+            height: 45vh;
+            @include display;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            background-color: rgb(255, 255, 255,0.05);
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid gray;
+            backdrop-filter: blur(5px);
+            color: gray;
+            gap: 10px;
+            h1{
+                color: aliceblue;
+                font-size: 1.8rem;
+                text-shadow: 2px 2px gray;
+            }
+        }
+
+        .developer{
+            color: gray;
+            img{
+                width: 30%;
+                filter: grayscale(100%);
+                cursor: pointer;
+                border: 2px solid black ;
+                border-radius: 50%;
+            }
+        }
+    }
+    
+}
+
+@media (max-width : 460px) {
+    .about-page{
+        width: calc(100vw - 4rem);
+        left: 4rem;
+    }
+
+    #app,#dev{
+        width: 95%;
+        height: 30vh;
+    }
+    
+}
