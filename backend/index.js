@@ -64,5 +64,5 @@ app.put("/explore/:id",(req,res)=>{
     })
 })
 app.listen(port,()=>{
-    console.log(`Backend server is running Successfully`);
+    console.log(`Server is running on -http://localhost:${port}`);
 })
