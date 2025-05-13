@@ -60,7 +60,7 @@ export default function Content() {
         
         {/*For CRUD  */}
         
-        {event.map((box)=>(
+        {event.length > 0 ? event.map((box)=>(
           <motion.div className='box' key={box.id} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1,transition:{type:"spring",stiffness:50}}}>
             <img src={box.cover} alt="" />
             <div className='storyDetails'>
@@ -75,7 +75,7 @@ export default function Content() {
               </div>
             </div>
           </motion.div>
-        ))}
+        )) : ""}
 
 
       </div>
