@@ -4,6 +4,8 @@ import content from './contentData';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from "axios"
+import server from '../../../environment';
+
 
 export default function Content() {
 
@@ -12,7 +14,7 @@ export default function Content() {
   useEffect(()=>{
     const fetchEvents = async ()=>{
       try {
-        const response = await axios.get("http://localhost:8800/explore")
+        const response = await axios.get(`${server}/explore`)
        console.log(response);
        setEvent(response.data)
        console.log(event);
@@ -26,7 +28,7 @@ export default function Content() {
   const handleDelete = async (id)=>{
     try {
       console.log("id is =",id);
-      await axios.delete("http://localhost:8800/explore/"+id)
+      await axios.delete(`${server}/explore/`+id)
       window.location.reload() //for reload this page
     } catch (err) {
       console.error(err)

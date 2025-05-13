@@ -3,6 +3,8 @@ import "./updateForm.scss"
 import {motion} from "framer-motion"
 import axios from "axios"
 import { useLocation, useNavigate} from "react-router-dom"
+import server from '../../../environment'
+
 
 export default function UpdateForm(props) {
 
@@ -25,7 +27,7 @@ export default function UpdateForm(props) {
   const handleClick = async (e)=>{
     e.preventDefault()
     try {
-      await axios.put(`http://localhost:8800/explore/${id}`,update)
+      await axios.put(`${server}/explore/${id}`,update)
       navigate("/")
     } catch (err) {
       console.error(err)
