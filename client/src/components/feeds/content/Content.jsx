@@ -14,13 +14,12 @@ export default function Content() {
   useEffect(()=>{
     const fetchEvents = async ()=>{
       try {
-        const response = await axios.get(`${server}/explore`)
-       console.log(response);
-       setEvent(response.data)
-       console.log(event);
-      } catch (err) {
-        console.error(err)
-      } 
+        const response = await fetch(`${server}/explore`)
+        const data = await response.json();
+        setEvent(data)
+      } catch (error) {
+        console.error(`Error at fatching postes from backend : ${error}`)
+      }
     }
     fetchEvents()
   },[])
@@ -28,10 +27,10 @@ export default function Content() {
   const handleDelete = async (id)=>{
     try {
       console.log("id is =",id);
-      await axios.delete(`${server}/explore/`+id)
-      window.location.reload() //for reload this page
+      await axios.delete(`${server}/explore/${id}`)
+      window.location.reload() 
     } catch (err) {
-      console.error(err)
+      console.error(`ERROR at deleting post : `,err)
     }
   }
   
@@ -61,17 +60,17 @@ export default function Content() {
         {/*For CRUD  */}
         
         {event.length > 0 ? event.map((box)=>(
-          <motion.div className='box' key={box.id} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1,transition:{type:"spring",stiffness:50}}}>
-            <img src={box.cover} alt="" />
+          <motion.div className='box' key={box._id} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1,transition:{type:"spring",stiffness:50}}}>
+            <img src={box.cover} alt={box.title} />
             <div className='storyDetails'>
               <h3 className='title'>{box.title}</h3>
               <p className='storyLine'>{box.expression}</p>
               <h5 className='author'>~ {box.author}</h5>
               <div className='buttons'>
                 <motion.button className='update' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>
-                <Link to={`/UpdateStories/${box.id}`} >Update</Link>
+                <Link to={`/UpdateStories/${box._id}`} >Update</Link>
                 </motion.button>
-                <motion.button onClick={()=>handleDelete(box.id)} className='delate' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>Delate</motion.button>
+                <motion.button onClick={()=>handleDelete(box._id)} className='delate' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>Delate</motion.button>
               </div>
             </div>
           </motion.div>

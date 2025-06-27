@@ -3,7 +3,7 @@ import "./updateForm.scss"
 import {motion} from "framer-motion"
 import axios from "axios"
 import { useLocation, useNavigate} from "react-router-dom"
-import server from '../../../environment'
+import server from '../../../environment.js'
 
 
 export default function UpdateForm(props) {
@@ -20,8 +20,10 @@ export default function UpdateForm(props) {
     cover : ""
   })
 
-
+  console.log("update post id : ",id);
+  
   const handleChange = (e)=>{
+    e.preventDefault()
     setUpdate((prev)=>({...prev,[e.target.name]:e.target.value}))
   }
   const handleClick = async (e)=>{
@@ -30,7 +32,8 @@ export default function UpdateForm(props) {
       await axios.put(`${server}/explore/${id}`,update)
       navigate("/")
     } catch (err) {
-      console.error(err)
+      alert("Modified your post first",err.message)
+      console.error("ERROR at Updating Post : ",err)
     }
   }
   return (

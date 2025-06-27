@@ -3,6 +3,9 @@ import "./form.scss"
 import { motion } from 'framer-motion'
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import server from '../../../environment.js';
+
+
 
 
 export default function Form(props) {
@@ -19,14 +22,15 @@ export default function Form(props) {
   const handleChange = (e)=>{
     setDetail((pre)=>({...pre,[e.target.name]:e.target.value}))
   }
-  console.log(detail);
+  // console.log(detail);
+
   const handleClick = (e)=>{
     e.preventDefault()
     try{
-      axios.post("http://localhost:8800/explore",detail)
+      axios.post(`${server}/explore`,detail)
       navigate("/")
     }catch(err){
-      console.error(err)
+      console.log(`Error at creating post by user : ${err}`)
     }
   }
   return (
