@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import "./content.scss"
-import content from './contentData'; 
+import content from './contentData.js'; 
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import axios from "axios"
-import server from '../../../environment';
+// import axios from "axios"
+import server from '../../../environment.js';
 
 
 export default function Content() {
@@ -14,32 +14,54 @@ export default function Content() {
   useEffect(()=>{
     const fetchEvents = async ()=>{
       try {
-        const response = await axios.get(`${server}/explore`)
-       console.log(response);
-       setEvent(response.data)
-       console.log(event);
-      } catch (err) {
-        console.error(err)
-      } 
+        const response = await fetch(`${server}/explore`)
+        const data = await response.json();
+        setEvent(data)
+      } catch (error) {
+        console.error(`Error at fatching postes from backend : ${error}`)
+      }
     }
     fetchEvents()
   },[])
 
-  const handleDelete = async (id)=>{
-    try {
-      console.log("id is =",id);
-      await axios.delete(`${server}/explore/`+id)
-      window.location.reload() //for reload this page
-    } catch (err) {
-      console.error(err)
-    }
-  }
+  // const handleDelete = async (id)=>{
+  //   try {
+  //     console.log("id is =",id);
+  //     await axios.delete(`${server}/explore/${id}`)
+  //     window.location.reload() 
+  //   } catch (err) {
+  //     console.error(`ERROR at deleting post : `,err)
+  //   }
+  // }
+
   
   return (
     <div className='content'>
       <motion.h1 className='head-text' initial={{scale:0.5,opacity:0.5}} animate={{scale:1,opacity:1,transition:{duration:1.5}}}>ALL THE STORIES</motion.h1>
 
       <div className='story-box'>
+        
+        {/*For CRUD  */}
+        
+        {event.length > 0 ? event.map((box)=>(
+          <motion.div className='box' key={box._id} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1,transition:{type:"spring",stiffness:50}}}>
+            <img src={box.cover} alt={box.title} />
+            <div className='storyDetails'>
+              <h3 className='title'>{box.title}</h3>
+              <p className='storyLine'>{box.expression}</p>
+              <h5 className='author'>~ {box.author}</h5>
+              <div className='buttons'>
+                <motion.button className='update' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>
+                <Link to={`/UpdateStories/${box._id}`}>Update</Link>
+                </motion.button>
+                {/* <motion.button onClick={()=>handleDelete(box._id)} className='delate not-allowed' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>Delate</motion.button> */}
+                <motion.button className='delate not-allowed' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>Delate</motion.button>
+
+              </div>
+            </div>
+          </motion.div>
+        )) : ""}
+
 
         {content.map((box)=>(
           <motion.div className='box' key={box.id} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1,transition:{type:"spring",stiffness:50}}}>
@@ -57,25 +79,6 @@ export default function Content() {
             </div>
           </motion.div>
         ))}
-        
-        {/*For CRUD  */}
-        
-        {event.length > 0 ? event.map((box)=>(
-          <motion.div className='box' key={box.id} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1,transition:{type:"spring",stiffness:50}}}>
-            <img src={box.cover} alt="" />
-            <div className='storyDetails'>
-              <h3 className='title'>{box.title}</h3>
-              <p className='storyLine'>{box.expression}</p>
-              <h5 className='author'>~ {box.author}</h5>
-              <div className='buttons'>
-                <motion.button className='update' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>
-                <Link to={`/UpdateStories/${box.id}`} >Update</Link>
-                </motion.button>
-                <motion.button onClick={()=>handleDelete(box.id)} className='delate' whileHover={{scale:1.1}} whileTap={{scale:0.9}}>Delate</motion.button>
-              </div>
-            </div>
-          </motion.div>
-        )) : ""}
 
 
       </div>
