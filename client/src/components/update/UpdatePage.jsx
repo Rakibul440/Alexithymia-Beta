@@ -1,6 +1,6 @@
 import React from 'react'
 import "./style.scss"
-import UpdateForm from './updateForm/UpdateForm'
+import UpdateForm from './updateForm/UpdateForm.jsx'
 import { motion } from 'framer-motion'
 
 export default function UpdatePage() {

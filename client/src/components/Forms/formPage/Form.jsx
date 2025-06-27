@@ -4,8 +4,11 @@ import { motion } from 'framer-motion'
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import server from '../../../environment.js';
+import {imgURL} from '../../feeds/content/contentData.js'; 
 
-let defaultImg = "https://i.pinimg.com/1200x/17/5c/60/175c60857b8d2965bfe74e9cef7a2b05.jpg"
+
+
+let defaultImg = imgURL[Math.floor(Math.random() * imgURL.length)];
 let defaultAuthor = "Anonymous"
 
 export default function Form(props) {

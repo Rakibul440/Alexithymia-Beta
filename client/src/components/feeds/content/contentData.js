@@ -47,8 +47,18 @@ Each night, I light a candle and pray for her return. I hold onto hope, fragile 
 ]
 
 export const imgURL = [
-    "",
-    "",
+    "https://i.pinimg.com/736x/8f/eb/f5/8febf558a5992581e0359f0576e89257.jpg",
+    "https://i.pinimg.com/736x/60/e4/0e/60e40e7ac8ba26bad35444ae2ced23b8.jpg",
+    "https://i.pinimg.com/736x/e4/84/f2/e484f29bd9d7847b0a2d93df484920e0.jpg",
+    "https://i.pinimg.com/736x/c5/e4/75/c5e4750dfefcba7326a25260c950b355.jpg",
+    "https://i.pinimg.com/736x/ba/87/c5/ba87c58c2eb6672a4f27079bb064320e.jpg",
+    "https://i.pinimg.com/736x/65/9c/39/659c3957fc4d9353c16c4b56c58b13ee.jpg",
+    "https://i.pinimg.com/736x/81/e5/32/81e532a65d1895f626301b003518930e.jpg",
+    "https://i.pinimg.com/736x/6b/85/0c/6b850cf49ffc0ccc289076b8889c8b4e.jpg",
+    "https://i.pinimg.com/736x/c8/1f/aa/c81faaed78665e34a90ad368c5a68541.jpg",
+    "https://i.pinimg.com/736x/de/36/4d/de364de35f5e1a9b3fc5b65235fa0149.jpg",
+    "https://i.pinimg.com/736x/75/1e/00/751e00dbd1aebb696fc767fe0c41aed2.jpg",
+    "https://i.pinimg.com/1200x/17/5c/60/175c60857b8d2965bfe74e9cef7a2b05.jpg"
 ]
 
 export default content;
