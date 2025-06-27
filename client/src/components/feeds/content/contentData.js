@@ -46,4 +46,9 @@ Each night, I light a candle and pray for her return. I hold onto hope, fragile 
     },
 ]
 
+export const imgURL = [
+    "",
+    "",
+]
+
 export default content;

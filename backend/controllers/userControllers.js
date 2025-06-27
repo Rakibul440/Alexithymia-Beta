@@ -16,6 +16,20 @@ export const allPosts = async (req,res)=>{
     }
 }
 
+export const postById = async (req,res)=>{
+    const id = req.params.id;
+    console.log(id);
+    
+    try {
+        const post = await Posts.findOne({_id:id});
+        console.log(post);
+        
+        res.status(httpStatus.FOUND).json(post);
+    } catch (error) {
+        res.json(`ERROR at fatching tha post with id : ${id}\n${error}`)
+    }
+}
+
 export const createPosts = async (req,res)=>{
     const {title,expression,author,cover} = req.body;
     if(!title || !expression) 
@@ -56,8 +70,7 @@ export const deletePost = async (req,res)=>{
 
 export const updatePost = async (req,res)=>{
     const _id = req.params.id;
-    console.log(_id);
-    
+
     const {title,expression,author,cover} = req.body;
     if(!title || !expression) return res.status(httpStatus.NOT_MODIFIED).json('Post is not modified!')
     
