@@ -20,14 +20,16 @@ app.use(userRoutes)
     
     try {
         const connectionDB = await mongoose.connect(process.env.MONGODB_URI)
+        .then(()=>{
+                app.listen(app.get('port'),()=>{
+                console.log(`Server is running on -http://localhost:${app.get('port')}`);
+                })
+        })
+        .catch((error)=>{console.log(`DATABASE connection FAILED : ${error}`)})
         console.log(`MONGO Connected DB HOST : ${connectionDB.connection.host}`)
         
     } catch (error) {
         console.log(`ERROR OCCURED DURING DATABASE CONNECTION : \n-> ${error}`)
     }
 
-    app.listen(app.get('port'),()=>{
-    
-        console.log(`Server is running on -http://localhost:${app.get('port')}`);
-    })
 })();
